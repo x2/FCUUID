@@ -142,7 +142,7 @@ NSString *const _uuidsOfUserDevicesToggleKey = @"fc_uuidsOfUserDevicesToggle";
 -(NSString *)uuidForInstallation
 {
     if( _uuidForInstallation == nil ){
-        _uuidForInstallation = [self _getOrCreateValueForKey:_uuidForInstallationKey defaultValue:nil userDefaults:YES keychain:NO service:nil accessGroup:nil synchronizable:NO];
+        _uuidForInstallation = [self _getOrCreateValueForKey:_uuidForInstallationKey defaultValue:nil userDefaults:YES keychain:YES service:nil accessGroup:nil synchronizable:NO];
     }
 
     return _uuidForInstallation;
@@ -180,7 +180,7 @@ NSString *const _uuidsOfUserDevicesToggleKey = @"fc_uuidsOfUserDevicesToggle";
 
 -(NSString *)uuidForDeviceMigratingValue:(NSString *)value commitMigration:(BOOL)commitMigration
 {
-    if([self uuidValueIsValid:value])
+//    if([self uuidValueIsValid:value])
     {
         NSString *oldValue = [self uuidForDevice];
         NSString *newValue = [NSString stringWithString:value];
@@ -207,11 +207,11 @@ NSString *const _uuidsOfUserDevicesToggleKey = @"fc_uuidsOfUserDevicesToggle";
             return oldValue;
         }
     }
-    else {
-        [NSException raise:@"Invalid uuid to migrate" format:@"uuid value should be a string of 32 or 36 characters."];
-
-        return nil;
-    }
+//    else {
+//        [NSException raise:@"Invalid uuid to migrate" format:@"uuid value should be a string of 32 or 36 characters."];
+//        
+//        return nil;
+//    }
 }
 
 
@@ -273,7 +273,7 @@ NSString *const _uuidsOfUserDevicesToggleKey = @"fc_uuidsOfUserDevicesToggle";
             NSString *uuidOfUserDeviceAsKey = [NSString stringWithFormat:@"%@_%@", _uuidForDeviceKey, uuidOfUserDevice];
 
             if(![[iCloud stringForKey:uuidOfUserDeviceAsKey] isEqualToString:uuidOfUserDevice]){
-                [iCloud setString:uuidOfUserDevice forKey:uuidOfUserDeviceAsKey];
+//                [iCloud setString:uuidOfUserDevice forKey:uuidOfUserDeviceAsKey];
             }
         }
 
